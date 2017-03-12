@@ -107,10 +107,28 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\Comics.cs" />
+    <Compile Include="Dto\Data.cs" />
+    <Compile Include="Dto\Events.cs" />
+    <Compile Include="Dto\Item.cs" />
+    <Compile Include="Dto\Item2.cs" />
+    <Compile Include="Dto\Item3.cs" />
+    <Compile Include="Dto\Item4.cs" />
+    <Compile Include="Dto\Result.cs" />
+    <Compile Include="Dto\RootObject.cs" />
+    <Compile Include="Dto\Series.cs" />
+    <Compile Include="Dto\Stories.cs" />
+    <Compile Include="Dto\Thumbnail.cs" />
+    <Compile Include="Dto\Url.cs" />
+    <Compile Include="Manager\Dto\CharacterDto.cs" />
+    <Compile Include="Manager\Dto\CharacterInfoDto.cs" />
+    <Compile Include="Manager\MarvelManager.cs" />
+    <Compile Include="MarvelApiService.cs" />
     <Compile Include="Validate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\CerebroInfo.rd.xml" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
