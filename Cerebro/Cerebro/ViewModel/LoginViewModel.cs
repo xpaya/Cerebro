@@ -50,7 +50,8 @@ namespace Cerebro.ViewModel
         {
             if (Validate.ValidateUser(UserName))
             {
-                //next step
+                MainViewModel vm = new MainViewModel(_navigate);
+                
             }
             else
             {
