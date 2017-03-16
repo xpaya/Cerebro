@@ -5,8 +5,10 @@
     xmlns:local="using:Cerebro.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    mc:Ignorable="d" 
+    x:Name="MainPage">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -20,10 +22,46 @@
                    Grid.Column="0" DisplayMode="CompactInline" 
                    Grid.Row="1" CompactPaneLength="48" OpenPaneLength="200" Grid.ColumnSpan="2" FontFamily="Segoe UI">
             <SplitView.Pane >
-                <Grid></Grid>
+                <StackPanel Orientation="Vertical" Margin="0" Padding="0">
+                    <ListView x:Name="MenuEntries" Padding="0" Margin="0" Width="248"
+                              ItemsSource="{Binding MenuList}"
+                                      Style="{StaticResource ListViewMenuStyle}"
+                                            IsItemClickEnabled="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Tapped">
+                                            <core:InvokeCommandAction Command="{Binding DataContext.ShowOptionCommand,Mode=TwoWay, ElementName=MainPage}"
+                                                  CommandParameter="{Binding }"/>
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="48"></ColumnDefinition>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="59"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Column="0" 
+
+                                               Text="{Binding Icon}" 
+                                               Style="{StaticResource BaseTextStyle}"
+                                               FontFamily="Segoe MDL2 Assets"
+                                               FontSize="35">
+                                    </TextBlock>
+                                    <TextBlock Grid.Column="1"  Text="{Binding Title}" 
+                                                           HorizontalAlignment="Stretch"
+                                               Style="{StaticResource BaseTextStyle}"
+                                                       />
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame Content="{Binding Content}"></Frame>
+                <Frame  x:Name="frameControl"/>
             </SplitView.Content>
         </SplitView>
         <StackPanel x:Name="HeaderPanel" Orientation="Horizontal"
@@ -34,7 +72,7 @@
                         BorderBrush="Black"
                         BorderThickness="0,0,0,0" >
                 <ToggleButton x:Name="btnMenuHamburger" Background="LightGray"   VerticalAlignment="Stretch" 
-                                  HorizontalAlignment="Stretch" Foreground="Black">
+                                  HorizontalAlignment="Stretch" Foreground="Black" Click="ButtonBase_OnClick">
                     <ToggleButton.Content>
                         <FontIcon x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Glyph="&#xE94E;" FontSize="35" Margin="0,0,0,0"/>
                     </ToggleButton.Content>

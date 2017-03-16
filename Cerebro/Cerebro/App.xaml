@@ -11,6 +11,8 @@
             <SolidColorBrush x:Key="XMenBackGroundColor">LightSlateGray</SolidColorBrush>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///CommonUi/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="ms-appx:///CommonUi/Styles/ListviewStyle.xaml"/>
+                <ResourceDictionary Source="ms-appx:///CommonUi/Styles/TextStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

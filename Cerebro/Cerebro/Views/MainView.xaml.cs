@@ -26,5 +26,16 @@ namespace Cerebro.Views
         {
             this.InitializeComponent();
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            MySplitViev.IsPaneOpen = !MySplitViev.IsPaneOpen;
+        }
+
+        public Frame FrameControl
+        {
+            get { return this.frameControl; }
+            
+        }
     }
 }
