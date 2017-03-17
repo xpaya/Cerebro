@@ -77,8 +77,8 @@ namespace Cerebro.ViewModel
             switch (item.Id)
             {
                 case 1:
-                    var vm = new LoginViewModel(Frame);
-                    vm.Navigate();
+                    var vm = new InfoListViewModel(Frame);
+            
                     break;
             }
         }

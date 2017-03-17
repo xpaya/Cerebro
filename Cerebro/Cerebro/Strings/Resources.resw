@@ -126,4 +126,10 @@
   <data name="txtUser.Header" xml:space="preserve">
     <value>Usuario</value>
   </data>
+  <data name="btnMore.Content" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="btnSearch.Content" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
 </root>

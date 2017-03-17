@@ -40,13 +40,26 @@ namespace CerebroInfo
 
             return result;
         }
-        internal  async static Task<RootObject> SearchMarvelCharacters(int limit = 100, int offset = 0)
+        internal  async static Task<RootObject> SearchMarvelCharacters(int limit = 100, int offset = 1)
         {
-            string url = GetFormatedUrl($"/v1/public/characters?limit={limit}?offset={offset}");
+            string url = GetFormatedUrl($"/v1/public/characters?limit={limit}&offset={offset}");
             HttpClient client = new HttpClient();
 
             var response = await client.GetAsync(url);
             var serializer  = new DataContractJsonSerializer(typeof(RootObject));
+            var result = await response.Content.ReadAsStringAsync();
+            var ms = new MemoryStream(Encoding.UTF8.GetBytes(result));
+            var data = (RootObject)serializer.ReadObject(ms);
+
+            return data;
+        }
+        internal async static Task<RootObject> SearchStartWith(string name ,int limit = 100, int offset = 1)
+        {
+            string url = GetFormatedUrl($"/v1/public/characters?nameStartsWith={name}&limit={limit}&offset={offset}");
+            HttpClient client = new HttpClient();
+
+            var response = await client.GetAsync(url);
+            var serializer = new DataContractJsonSerializer(typeof(RootObject));
             var result = await response.Content.ReadAsStringAsync();
             var ms = new MemoryStream(Encoding.UTF8.GetBytes(result));
             var data = (RootObject)serializer.ReadObject(ms);

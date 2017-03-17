@@ -7,7 +7,7 @@ namespace Cerebro.ViewModel.Base
 {
     public abstract class BaseViewModel : NotifyPropertychange
     {
-        protected Frame _navigate;
+        protected readonly Frame _navigate;
 
         protected BaseViewModel(Frame navigation)
         {
@@ -20,7 +20,7 @@ namespace Cerebro.ViewModel.Base
         protected void Navigate(Type viewType, object context)
         {
             _navigate.Navigate(viewType);
-            var element = (FrameworkElement)_navigate.Content;
+            var element = _navigate.Content as FrameworkElement;
             if (element != null)
             {
                 element.DataContext = context;
