@@ -8,14 +8,26 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="stack2.Orientation" Value="Horizontal" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel x:Name="stack2" Grid.Row="0" Orientation="Vertical">
+         
             <TextBox Text="{Binding Name,Mode=TwoWay}" Width="300"></TextBox>
             <Button  x:Uid="btnSearch" Command="{Binding StartWithCommand}" Style="{StaticResource MyButtonStylePrimary}"></Button>
         </StackPanel>    
@@ -38,8 +50,9 @@
                             <RowDefinition Height="100"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Image Grid.Column="0" Source="{Binding Image,Mode=TwoWay}"></Image>
-                        <StackPanel Grid.Column="1"  Orientation="Horizontal">
-                            <TextBlock  Text="{Binding Name,Mode=TwoWay}" 
+                        <StackPanel x:Name="stack" Grid.Column="1"  Orientation="Horizontal">
+                       
+                                    <TextBlock  Text="{Binding Name,Mode=TwoWay}" 
                                    HorizontalAlignment="Stretch"
                                    Style="{StaticResource BaseTextStyle}" Margin="0,0,5,0"/>
                             <TextBlock  Text="{Binding Description,Mode=TwoWay}" 
